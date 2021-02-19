@@ -1,0 +1,1005 @@
+/* =====================================================================================================
+Colours
+======================================================================================================== */
+.white {
+    color: white;
+}
+
+.black {
+    color: black;
+}
+
+.prussianBlue {
+    color: #212D40;
+}
+
+.uranianBlue {
+    color: #AFD2E9;
+}
+
+.pewterBlue {
+    color: #88ADC5;
+}
+
+.yellowCrayola {
+    color: #F9E784;
+}
+
+.copperCrayola {
+    color: #E58F65;
+}
+
+.tumbleweed {
+    color: #EDB596;
+}
+
+.indianRed {
+    color: #D05353;
+}
+
+.positive {
+    color: green;
+}
+
+.negative {
+    color: red;
+}
+
+/* =====================================================================================================
+Fonts 
+======================================================================================================== */
+/* Kufam */
+@font-face {
+    font-family: 'Kufam';
+    src: url('../fonts/Kufam-VariableFont_wght.ttf') format('truetype-variations');
+    font-weight: 400 900;
+}
+/* Lexend Peta */
+@font-face {
+    font-family: 'Lexend Peta';
+    src: url('../fonts/LexendPeta-Regular.ttf');
+    font-weight: 400;
+}
+
+/* ===================================================================================================== 
+Global Selectors
+======================================================================================================== */
+html {
+    font-size: 16px;
+    box-sizing: border-box;
+    height: 100vh;
+    height: -webkit-fill-available;
+}
+
+body {
+    position: relative; /* so that absolute positioned loadingScreenContainer and mainPageContainer are positioned relative to this */
+    color: white; 
+    min-height: 100vh; /* Default value in case resize function doesn't trigger */
+}
+
+html, body {
+    width: 100vw; /* Default value in case resize function doesn't trigger */
+    overflow: hidden;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+    font-family: 'Kufam';
+    margin: 0;
+    padding: 0;
+    touch-action: pan-x pan-y; /* iOS Specific (again) - prevents zoom (which metatags no longer honor on iOS safari-based browsers) */
+}
+
+p {
+    font-size: 0.8rem;
+}
+
+img {
+    display: block;
+}
+
+*:disabled {
+    background-color: #cccccc;
+    color: #666666;
+}
+
+main {
+    flex: 1;
+    position: relative; /* So that absolute positioned map is positioned relative to this*/
+}
+
+.mainPageContainer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+}
+
+.placeholder {
+    object-position: -250px -150px;
+}
+
+.flex {
+    display: flex;
+}
+
+.fullWidth {
+    width: 100%;
+}
+
+.horizontalScroll {
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+.verticalScroll {
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+/* =====================================================================================================
+Custom Scrollbars
+======================================================================================================== */
+/* Works on Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #212D40 white;
+  }
+  
+  /* Works on Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+  
+  *::-webkit-scrollbar-track {
+    background: white;
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    background-color: #212D40;
+    border-radius: 20px;
+    border: 3px solid white;
+  }
+
+/* =====================================================================================================
+Interactivity Aids (Note - !important value used for these only as they are interactivity aids)
+======================================================================================================== */
+/* ===== Clicked ===== */
+.clicked {
+    background-color: #F9E784 !important;
+}
+
+/* ===== Tabbed =====*/
+#countries.tabbed {
+    border: solid 2px #D05353;
+}
+
+.mapButton.tabbed,
+.footerInfoButton.tabbed,
+.footerSelect.tabbed,
+.footerSwitchButton.tabbed {
+    background-color: #D05353 !important;
+    transition: background-color 0s !important;
+}
+
+#countries:focus,
+.mapButton:focus,
+.footerInfoButton:focus,
+.footerSelect:focus,
+.footerSwitchButton:focus {
+    outline: none;
+}
+
+/* =====================================================================================================
+Map
+======================================================================================================== */
+#map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 0;
+}
+
+.inactive {
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
+.currentButton {
+    display: none;
+}
+
+.buttonContainer {
+    z-index: 1;
+    flex-direction: column;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+
+.mapButton {
+    z-index: 1;
+    border: none;
+    margin: 2px 0;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.7;
+    background-color: #EFEFEF;
+
+}
+
+.leaflet-control-zoom.leaflet-bar.leaflet-control {
+    opacity: 0.7;
+    border: none;
+}
+
+a.leaflet-control-zoom-in, a.leaflet-control-zoom-out {
+    background-color: #EFEFEF;
+}
+
+
+.mapButtonImage {
+    height: auto;
+    width: 30px;
+    display: inline-block;
+}
+
+.selectCurrentCountryButton.active {
+    background-color: #F9E784;
+}
+
+/* =====================================================================================================
+Custom Cursors
+======================================================================================================== */
+.markerCursor {
+    cursor: url('../images/cursors/markerCursor.png') 16 32, auto;
+}
+
+.markerCursorSuccess {
+    cursor: url('../images/cursors/markerCursorSuccess.png') 16 32, auto;
+}
+
+.markerCursorFailure {
+    cursor: url('../images/cursors/markerCursorFailure.png') 16 32, auto;
+}
+
+.headerImageContainer, .headerTextContainer, .footerSelect {
+    cursor: pointer;
+}
+
+/* ===================================================================================================== 
+PullTab
+======================================================================================================== */
+.footerHeader {
+    width: 100%;
+    max-width: 100vw;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    max-height: 60px;
+}
+
+
+.footerSelect {
+    border: none;
+    opacity: 0.8;
+    border-radius: 10px 0 0 0;
+    display: none;
+    font-size: 0.8rem;
+    width: 100%;
+    min-width: 75px;
+    flex: 1;
+}
+
+.footerSwitchButton {
+    border: none;
+    opacity: 0.8;
+    border-radius: 10px 10px 0 0;
+    display: none;
+}
+
+.switchFooterIcon {
+    height: auto;
+    width: 30px;
+    padding: 2px;
+    
+}
+
+.pullTabContainer {
+    flex-flow: row-reverse;
+}
+
+.pullTab {
+    width: fit-content;
+    flex-shrink: 0;
+    border: none;
+    font-size: 0.8rem;
+    padding: 5px;
+    opacity: 0.8;
+    color: white;
+    background-color: #212D40;
+    transition: background-color 0.5s;
+    text-align: end;
+}
+
+.selectPresent {
+    border-radius: 0 10px 0 0;
+}
+
+.selectNotPresent {
+    border-radius: 10px 10px 0 0;
+}
+
+.pulltabIcon {
+    height: auto;
+    width: 20px;
+    display: inline;
+    padding: 2px;
+    filter: invert(100%);
+}
+
+.pulltabImage {
+    height: auto;
+    width: 20px;
+    display: inline;
+    padding: 2px;
+  }
+
+.footerSection {
+    padding: 20px;
+    display: hidden;
+}
+
+/* =====================================================================================================
+Countries Select
+======================================================================================================== */
+.countriesSelectContainer {
+    padding-left: 5px;
+    align-items:  center; /* Vertical */
+    justify-content: center; /* Horizontal */
+}
+label[for="countries"] {
+    margin: 0;
+    font-size: 0.6em;
+    text-align: right;
+}
+
+#countries {
+    margin-left: 5px;
+    padding: 4px 0;
+    border-radius: 5px;
+    flex: 1;
+    width: 100%;
+    max-width: 150px;
+    min-width: 50px;
+    font-size: 0.8em;
+    height: fit-content;
+}
+
+/* =====================================================================================================
+Animations
+======================================================================================================== */
+/* Bounce Up Letter Animation */
+.ml6 .text-wrapper {
+    display: inline-block;
+    overflow: hidden;
+}
+
+.ml6 .letter {
+    display: inline-block;
+}
+
+/* =====================================================================================================
+Loading Screen
+======================================================================================================== */
+.loadingScreenContainer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px;
+    z-index: 12;
+    background-color: #212D40;
+}
+
+.loadingMainContentContainer {
+    padding-bottom: 10px;
+}
+
+.loadingText {
+    font-size: 1rem;
+    text-align: center;
+}
+
+.loadingStatusMessage {
+    font-size: 0.7rem;
+    text-align: center;
+}
+
+.loadingScreenMessageContainer {
+    width: inherit;
+}
+
+.loadingScreenInfoMessage {
+    font-size: 0.9rem;
+    font-family: 'Lexend Peta';
+    padding: 0 10px;
+    word-wrap: break-word;
+}
+
+.loadingAnimationContainer {
+    width: 100px;
+    margin: auto;
+}
+
+.loadingAnimation {
+    width: 100%;
+    height: auto;
+}
+
+/* =====================================================================================================
+Header
+======================================================================================================== */
+header {
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    background-color: #212D40;
+}
+
+.headerImageContainer {
+    height: 20px;
+}
+
+.headerImage {
+    height: 100%;
+    margin: auto;
+}
+.headerTextContainer {
+    display: none;
+    height: 30px;
+    width: auto;
+}
+
+.headerText {
+    height: 100%
+}
+
+/* =====================================================================================================
+Footer
+======================================================================================================== */
+footer {
+    position: absolute; /* Sits at bottom-right of mainPageContainer*/
+    bottom: 0;
+    right: 0;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    z-index: 11;
+    color: black;
+}
+
+.footerSpinnerContainer {
+    height: 75px;
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 100%;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.footerSpinnerContainer img {
+    height: 100%;
+}
+
+.footerInfoContainer {
+    display: none;
+    background-color: white;
+}
+
+@media screen and (orientation: portrait) {
+
+    .footerInfoContainer {
+        height: 40vh;
+        max-height: 700px;
+    }
+
+}
+
+@media screen and (orientation: landscape) {
+
+    .footerInfoContainer {
+        height: 70vh;
+        max-height: 500px;
+    }
+
+}
+
+.aboutSectionContainer td:first-child {
+    text-align: right;
+    width: 40%;
+}
+
+.aboutSectionContainer td:last-child {
+    text-align: center;
+    font-weight: bold;
+}
+
+.activeSection {
+    height: 200px;
+    margin-bottom: 25px;
+    box-sizing: border-box;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.noLoad {
+    text-align: center;
+    padding: 20px 2px;
+    font-size: 1.1rem;
+}
+
+/* =====================================================================================================
+Tables
+======================================================================================================== */
+.tableContainer {
+    padding-bottom: 25px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+.tableImage {
+    display: inline-block;
+    width: 40px;
+}
+
+/* ===== About Table ===== */
+.aboutTable {
+    width: 100%;
+    max-width: 500px;
+}
+
+.aboutTable td {
+    padding: 2px 10px;
+    width: 50%;
+}
+
+.aboutTable img {
+    display: inline-block;
+    width: 40px;
+}
+
+/* ===== Local Weather Tables ===== */
+.dayTable {
+    text-align: center;
+}
+
+.dayTable tr:first-child {
+    font-size: 1.1rem;
+}
+
+.dayTable td {
+    padding: 2px 10px;
+    width: 10%;
+}
+
+.dayTable img {
+    display: inline-block;
+    width: 30px;
+}
+
+.weekTable {
+    max-width: 1000px;
+    text-align: center;
+}
+
+.weekTable td:first-child {
+    text-align: right;
+    font-weight: bold;
+    font-size: 0.75rem;
+    border-right: solid 1px #88ADC5;
+}
+
+.weekTable img {
+    display: inline-block;
+    width: 20px;
+}
+
+.weekTable td {
+    padding: 2px 8px;
+    width: 25%;
+}
+
+/* ===== Country Weather Table ===== */
+.countryWeatherTable {
+    width: 100%;
+    max-width: 500px;
+}
+
+.countryWeatherTable td {
+    padding: 2px 10px;
+    width: 50%;
+}
+
+/* ===== Covid Table ===== */
+.covidTable {
+    width: 100%;
+    max-width: 500px;
+}
+
+.covidTable td {
+    padding: 2px 10px;
+    width: 50%;
+}
+
+
+/* =====================================================================================================
+Info Blocks
+========================================================================================================*/
+.infoBlock {
+    margin-top: 25px;
+    border-radius: 0 0 0 10px;
+ }
+
+ .infoBlock .tab {
+    float: left;
+    width: 50px;
+    min-height: 30px;
+    border-radius: 0 0 10px 0;
+    margin-right: 10px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+ }
+
+ .infoBlock .thumbnail {
+     width: inherit;
+     height: auto;
+     max-height: 35px;
+ }
+
+ .infoBlock .number {
+    margin: 0;
+    font-size: 1.2rem;
+    text-align: center;
+    display: block;
+    color: white;
+ }
+
+ .infoBlock .summary {
+    padding-top: 5px;
+    padding-left: 45px;
+ }
+
+ .infoBlock .title {
+    font-size: 1.3rem;
+ }
+
+ .infoBlock .title, .infoBlock .datetime {
+    padding-left: 30px;
+ }
+
+ .infoBlock .summary::first-letter {
+    font-size: 1.6rem;
+    line-height: 1rem;
+ }
+
+ .infoBlock .datetime {
+    color: grey;
+    font-size: 0.75rem;
+ }
+
+.linkButton {
+    padding: 2px 10px;
+    border: none;
+    border-radius: 0 3px 0 0;
+    font-size: 0.8rem;
+    font-weight: initial;
+    display: block;
+    margin-left: auto;
+    margin-right: 0;
+    transition: background-color 0.5s, font-weight 0.5s;
+}
+
+.linkButton:active {
+    background-color: #212D40;
+    color: white; 
+    font-weight: bold;
+}
+
+/* =====================================================================================================
+home and current
+======================================================================================================== */
+.footerSelect.home, .footerSwitchButton:not(:disabled):not(:hover).home {
+    background-color: #AFD2E9;
+}
+
+.footerSelect.current, .footerSwitchButton:not(:disabled):not(:hover).current {
+    background-color:  #EDB596;
+}
+
+.current .sectionHeader {
+
+    border-bottom: solid 1px #EDB596;
+
+}
+
+.home .sectionHeader {
+
+    border-bottom: solid 1px  #88ADC5;
+
+}
+
+.home .infoBlock .summary::first-letter {
+    color: #88ADC5;
+ }
+
+ .current .infoBlock .summary::first-letter {
+    color: #E58F65;
+ }
+
+ 
+
+ .home .infoBlock {
+    border-bottom: 1px solid #AFD2E9;
+    border-left: 1px solid #AFD2E9;
+ }
+
+ .current .infoBlock {
+    border-bottom: 1px solid #EDB596;
+    border-left: 1px solid #EDB596;
+ }
+
+ .home .linkButton {
+    background-color: #AFD2E9;
+}
+
+.current .linkButton {
+    background-color: #EDB596;
+}
+
+.home .infoBlock .tab {
+    background-color: #212D40;
+ }
+
+ .current .infoBlock .tab {
+    background-color: #E58F65;
+ }
+
+ .home .infoBlock .number {
+    border-top: solid 1px #AFD2E9;
+ }
+
+.current .infoBlock .number {
+    border-top: solid 1px #EDB596;
+}
+
+/* =====================================================================================================
+Currency Section
+======================================================================================================== */
+.currency {
+    font-size: 1.1rem;
+}
+
+.currencyTable img {
+    display: inline-block;
+    width: 30px;
+}
+
+.currencyTable th {
+    vertical-align: bottom;
+    font-weight: bold;
+}
+
+.currencyTable th, .currencyTable td {
+    padding: 2px 17px;
+    width: 33%;
+    text-align: center;
+}
+
+.currencyTable { 
+    width: 80%;
+    max-width: 700px;
+}
+
+/* =====================================================================================================
+Animations
+======================================================================================================== */
+/* Rotate Left (rotates left 360 degrees around the y-axis (3 dimensionally)) */
+/* WebKit and Opera browsers */
+@-webkit-keyframes rotateLeft {
+    from { -webkit-transform: rotateY(0deg);    }
+    to   { -webkit-transform: rotateY(-360deg); }
+}
+
+/* all other browsers */
+@keyframes rotateLeft {
+    from {
+        -moz-transform: rotateY(0deg);
+        -ms-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+    }
+    to {
+        -moz-transform: rotateY(-360deg);
+        -ms-transform: rotateY(-360deg);
+        transform: rotateY(-360deg);
+    }
+}
+
+.rotateLeft {
+    -webkit-animation-name: rotateLeft;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-duration: 0.35s;
+
+    animation-name: rotateLeft;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    animation-duration: 0.35s;
+
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    transform-style: preserve-3d;    
+}
+
+/* Rotate Right (rorates right 360 degrees around the y-axis (3 dimensionally)*/
+/* WebKit and Opera browsers */
+@-webkit-keyframes rotateRight {
+    from { -webkit-transform: rotateY(0deg);   }
+    to   { -webkit-transform: rotateY(360deg); }
+}
+
+/* all other browsers */
+@keyframes rotateRight {
+    from {
+        -moz-transform: rotateY(0deg);
+        -ms-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+    }
+    to {
+        -moz-transform: rotateY(360deg);
+        -ms-transform: rotateY(360deg);
+        transform: rotateY(360deg);
+    }
+}
+
+.rotateRight {
+    -webkit-animation-name: rotateRight;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-duration: 0.35s;
+
+    animation-name: rotateRight;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    animation-duration: 0.35s;
+
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+/* Spin Right (spins 360 degrees to the left in 2D, with a windup to the right) */
+@-webkit-keyframes spinRight {
+    0% {
+      -webkit-transform: rotate(0);
+              transform: rotate(0);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+              transform: rotate(360deg);
+    }
+  }
+@keyframes spinRight {
+    0% {
+        -webkit-transform: rotate(0);
+            transform: rotate(0);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+    }
+}
+
+.spinRight {
+	-webkit-animation: spinRight 0.6s cubic-bezier(0.680, -0.550, 0.265, 1.550) both;
+	    animation: spinRight 0.6s cubic-bezier(0.680, -0.550, 0.265, 1.550) both;
+}
+
+.spinLeft {
+	-webkit-animation: spinRight 0.6s cubic-bezier(0.680, -0.550, 0.265, 1.550) reverse both;
+	    animation: spinRight 0.6s cubic-bezier(0.680, -0.550, 0.265, 1.550) reverse both;
+}
+
+
+/* =====================================================================================================
+Hover (ignores touch devices) 
+======================================================================================================== */
+@media (hover: hover) and (pointer: fine) {
+
+    .linkButton:hover {
+        background-color: #E58F65;
+        font-weight: bold;
+    }
+
+    .mapButton:hover, 
+    .switchFooter:hover, 
+    .pullTab:hover,
+    .footerSelect:hover,
+    .footerSwitchButton:hover,
+    a.leaflet-control-zoom-in:hover, 
+    a.leaflet-control-zoom-out:hover  {
+        background-color: #E58F65;
+    }
+
+
+}
+
+/* =====================================================================================================
+Breakpoint Resizing
+======================================================================================================== */
+/* ===== Tablets ===== */
+@media screen 
+and (min-device-width: 425px) 
+and (min-device-height: 425px) {
+
+    /* ===== Header ===== */
+    .headerImageContainer {
+        height: 30px;
+    }
+    
+    .headerTextContainer {
+        display: block;
+        height: 40px;
+    }
+
+    /* ===== Countries Select ===== */
+    label[for="countries"] {
+        font-size: 0.7em;
+    }
+    
+    #countries {
+        font-size: 0.9em;
+    }
+
+}
+
+/* ===== PCs ===== */
+@media screen
+and (min-width: 768px) 
+and (min-height: 575px) {
+    /* ===== Header ===== */
+    .headerImageContainer {
+        height: 40px;
+    }
+    
+    .headerTextContainer {
+        height: 50px;
+    }
+
+    /* ===== Countries Select ===== */
+    label[for="countries"] {
+        font-size: 0.8em;
+    }
+    
+    #countries {
+        font-size: 1em;
+    }
+
+}

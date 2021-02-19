@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <!-- Favicon -->
+        <link rel="apple-touch-icon" sizes="180x180" href="resources/images/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="resources/images/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="resources/images/favicon/favicon-16x16.png">
+        <link rel="manifest" href="resources/images/favicon/site.webmanifest">
+        <link rel="mask-icon" href="resources/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#b91d47">
+        <meta name="theme-color" content="#212D40">
+        <!-- Viewport Setup -->
+        <meta name="viewport" charset="utf-8" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <title>Global Gazetteer</title>
+        <!-- ===== CSS ===== -->
+        <!-- Normalize CSS -->
+        <link rel="stylesheet" href="resources/css/normalize.css">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+        crossorigin="anonymous">
+        <!-- Material Design Bootstrap -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+        <!-- Leaflet CSS -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+            integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+            crossorigin=""/>
+    <!-- Main CSS -->
+        <link rel="stylesheet" href="resources/css/main.css">
+    </head>
+    <body>
+        <!-- ===== Loading Screen ===== -->
+        <section class="loadingScreenContainer flex">
+            <div class="loadingMainContentContainer">
+                <div class="loadingAnimationContainer">
+                    <img class="loadingAnimation" src="resources/images/logoAnimation.gif">
+                </div>
+                <p class="ml6 loadingText">Loading...</p>
+                <p class="loadingStatusMessage animated bounceIn">
+                    Initialization...
+                </p>
+            </div>
+            <div class="loadingScreenMessageContainer">
+            </div>
+        </section>
+        <!-- Loading Screen JS -->
+        <!-- anime JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+        <!-- Loading JS -->
+        <script src="resources/js/loading.js"></script>
+        <!-- ===== Main App ===== -->
+        <section class="mainPageContainer flex">
+            <!-- Header -->
+            <header class="flex fullWidth">
+                <div class="headerImageContainer">
+                    <img class="headerImage" src="resources/images/logo.png" alt="Global Gazetteer Logo">
+                </div>
+                <div class="headerTextContainer">
+                    <img class="headerText" src="resources/images/logoFont.png" alt="Global Gazetteer Text Logo">
+                </div>
+                <div class="countriesSelectContainer flex">
+                    <label for="countries">Select a Country:</label>
+                    <select id="countries"></select>
+                </div>
+            </header>
+            <!-- Main Content -->
+            <main>
+                <!-- Map -->
+                <div id="map"></div>
+                <div class="buttonContainer flex">
+                    <button type="button" class="mapButton homeButton"><img class="mapButtonImage" src="resources/images/icons/home.png"></button>
+                    <button type="button" class="mapButton currentButton"><img class="mapButtonImage" src="resources/images/icons/current.png"></button>
+                </div>
+            </main>
+            <!-- Footer -->
+            <footer class="flex">
+                <!-- Footer Header -->
+                <div class="footerHeader flex">
+                    <div class="pullTabContainer flex">
+                        <button type="button" class="footerInfoButton pullTab selectNotPresent">
+                            <span class="locationInfo">Current Location</span> &#9432;<img class="footerInfoImage pulltabIcon" src="resources/images/icons/upArrow.png" alt="Up Arrow Icon">
+                        </button>
+                        <select name="footerContent" class="footerSelect active home"></select>
+                        <select name="footerContent" class="footerSelect inactive current"></select>
+                    </div>
+                    <button type="button" class="footerSwitchButton home">
+                        <img class="switchFooterIcon" src="resources/images/icons/switchFooter.png" alt="Switch Icon">
+                    </button>
+                </div>
+                <!-- Footer Info Container -->
+                <div class="footerInfoContainer fullWidth verticalScroll">
+                    <!-- Default Section -->
+                    <div class="defaultSection footerSection fullWidth active">
+                        <h3 class="sectionHeader"></h3>
+                        <div class="footerSpinnerContainer prussianBlueBackground animated rubberBand infinite">
+                            <img src="resources/images/logoAnimation.gif">
+                        </div>
+                        <p class="ml6 loadingText">Loading...</p>
+                    </div>
+                </div>
+            </footer>
+        </section>
+        <!-- ===== JS ===== -->
+        <!-- External -->
+        <!-- jQuery JS -->
+        <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+        <!-- Popper JS -->
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <!-- Bootstrap JS -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+        <!-- Leaflet JS -->
+        <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+        <!-- Moment JS -->
+        <script src="resources/js/libraries/moment.js"></script>
+        <!-- Lodash -->
+        <script src="resources/js/libraries/lodash.js"></script>
+        <!-- Size Of -->
+        <script src="resources/js/libraries/sizeof.js"></script>
+        <!-- Internal -->
+        <!-- Functions -->
+        <script src="resources/js/functions.js"></script>
+        <!-- Request -->
+        <script src="resources/js/request.js"></script>
+        <!-- Footer -->
+        <script src="resources/js/footer.js"></script>
+        <!-- Map -->
+        <script src="resources/js/map.js"></script>
+        <!-- Main JS -->
+        <script src="resources/js/main.js"></script>
+    </body>
+</html>
